@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--brand-50: 236 253 245;
+	--brand-100: 209 250 229;
+	--brand-500: 16 185 129;
+	--brand-600: 5 150 105;
+	--brand-700: 4 120 87;
+	--brand-900: 6 78 59;
+	color-scheme: light;
+}
+
+:root[data-accent='blue'] {
+	--brand-50: 239 246 255;
+	--brand-100: 219 234 254;
+	--brand-500: 59 130 246;
+	--brand-600: 37 99 235;
+	--brand-700: 29 78 216;
+	--brand-900: 30 58 138;
+}
+
+:root[data-accent='violet'] {
+	--brand-50: 245 243 255;
+	--brand-100: 237 233 254;
+	--brand-500: 139 92 246;
+	--brand-600: 124 58 237;
+	--brand-700: 109 40 217;
+	--brand-900: 76 29 149;
+}
+
+:root[data-accent='rose'] {
+	--brand-50: 255 241 242;
+	--brand-100: 255 228 230;
+	--brand-500: 244 63 94;
+	--brand-600: 225 29 72;
+	--brand-700: 190 18 60;
+	--brand-900: 136 19 55;
+}
+
+:root[data-accent='amber'] {
+	--brand-50: 255 251 235;
+	--brand-100: 254 243 199;
+	--brand-500: 245 158 11;
+	--brand-600: 217 119 6;
+	--brand-700: 180 83 9;
+	--brand-900: 120 53 15;
+}
+
+body {
+	@apply bg-slate-50 text-slate-800 antialiased;
+	background-image: radial-gradient(ellipse at top left, rgb(var(--brand-50) / 0.72), transparent 38rem);
+	min-height: 100vh;
+	transition: background-color 180ms ease, color 180ms ease;
+}
+
+button, input, select, textarea { font: inherit; }
+
+.rounded-xl.border.border-slate-200.bg-white {
+	box-shadow: 0 1px 2px rgb(15 23 42 / 0.035), 0 12px 28px rgb(15 23 42 / 0.035);
+}
+
+:root[data-density='compact'] table th { padding-block: 0.45rem; }
+:root[data-density='compact'] table td { padding-block: 0.55rem; }
+:root[data-density='compact'] .rounded-xl.border.border-slate-200.bg-white { border-radius: 0.8rem; }
+
+nav[aria-label='Main navigation'] { scrollbar-width: none; }
+nav[aria-label='Main navigation']::-webkit-scrollbar { display: none; }
+
+:root[data-theme='dark'] {
+	color-scheme: dark;
+}
+
+:root[data-theme='dark'] body {
+	@apply bg-slate-950 text-slate-100;
+	background-image: radial-gradient(ellipse at top left, rgb(var(--brand-900) / 0.22), transparent 42rem);
+}
+
+:root[data-theme='dark'] .bg-white,
+:root[data-theme='dark'] .bg-slate-50 { background-color: rgb(15 23 42); }
+:root[data-theme='dark'] .bg-slate-100 { background-color: rgb(30 41 59); }
+:root[data-theme='dark'] .bg-brand-50 { background-color: rgb(var(--brand-900) / 0.28); }
+:root[data-theme='dark'] .text-slate-900,
+:root[data-theme='dark'] .text-slate-800,
+:root[data-theme='dark'] .text-slate-700 { color: rgb(226 232 240); }
+:root[data-theme='dark'] .text-slate-600,
+:root[data-theme='dark'] .text-slate-500 { color: rgb(148 163 184); }
+:root[data-theme='dark'] .border-slate-100,
+:root[data-theme='dark'] .border-slate-200,
+:root[data-theme='dark'] .border-slate-300 { border-color: rgb(51 65 85); }
+:root[data-theme='dark'] .bg-slate-50.text-xs,
+:root[data-theme='dark'] .bg-slate-50.text-sm { background-color: rgb(30 41 59); }
+:root[data-theme='dark'] table thead th { background-color: rgb(30 41 59); }
+:root[data-theme='dark'] input,
+:root[data-theme='dark'] select,
+:root[data-theme='dark'] textarea { background-color: rgb(15 23 42); color: rgb(226 232 240); }
+:root[data-theme='dark'] input::placeholder,
+:root[data-theme='dark'] textarea::placeholder { color: rgb(100 116 139); }
+:root[data-theme='dark'] .hover\:bg-slate-50:hover,
+:root[data-theme='dark'] .hover\:bg-slate-100:hover { background-color: rgb(30 41 59); }
+:root[data-theme='dark'] .rounded-xl.border.border-slate-200.bg-white {
+	box-shadow: 0 1px 2px rgb(0 0 0 / 0.15), 0 16px 36px rgb(0 0 0 / 0.12);
+}
+
+@media print {
+	@page { margin: 12mm; }
+	body * { visibility: hidden !important; }
+	.receipt-print, .receipt-print * { visibility: visible !important; }
+	.receipt-print { position: absolute; inset: 0 auto auto 0; width: 100%; color: #111827 !important; background: white !important; }
+	.receipt-print table th, .receipt-print table td { padding: 6px 8px !important; border-color: #d1d5db !important; background: white !important; color: #111827 !important; }
+	.receipt-print img { print-color-adjust: exact; }
+}

@@ -1,0 +1,50 @@
+# Secrets and machine-local configuration
+.env
+.env.*
+**/.env
+**/.env.*
+!/.env.example
+!**/.env.example
+!**/.env.local.example
+!**/.env.example.snippet
+/auth.json
+**/auth.json
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local databases and user-generated pharmacy data
+*.sqlite
+*.sqlite-*
+*.db
+laravel/storage/app/private/
+laravel/storage/app/public/
+laravel/public/storage
+laravel/storage/logs/
+laravel/storage/framework/cache/
+laravel/storage/framework/sessions/
+laravel/storage/framework/testing/
+laravel/storage/framework/views/
+
+# Dependencies and generated builds
+**/node_modules/
+**/vendor/
+frontend/.next/
+frontend/out/
+frontend/next-env.d.ts
+frontend/coverage/
+laravel/public/build/
+laravel/bootstrap/cache/*.php
+laravel/.phpunit.cache/
+laravel/.phpunit.result.cache
+laravel/.phpunit-watcher.yml
+
+# Local editors, OS files, and logs
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/*.log
+*.swp
+*.swo
