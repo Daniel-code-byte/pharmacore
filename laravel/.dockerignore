@@ -1,0 +1,14 @@
+/vendor
+/node_modules
+/.env
+/database/database.sqlite
+/storage/*.key
+/storage/logs/*
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/tests
+/phpunit.xml
+/.phpunit.result.cache
+Dockerfile
+.dockerignore

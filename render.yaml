@@ -1,0 +1,34 @@
+# Render Blueprint — deploys the Laravel API as a Docker web service.
+# Frontend is hosted separately on Vercel.
+services:
+  - type: web
+    name: pharmacore-api
+    runtime: docker
+    dockerfilePath: ./laravel/Dockerfile
+    dockerContext: ./laravel
+    plan: free
+    healthCheckPath: /up
+    envVars:
+      - key: APP_KEY
+        generateValue: true
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: DB_CONNECTION
+        value: sqlite
+      - key: DB_DATABASE
+        value: /var/data/database.sqlite
+      - key: SESSION_DRIVER
+        value: file
+      - key: CACHE_STORE
+        value: file
+      - key: MPESA_ENV
+        value: sandbox
+      # Set these later if you want M-Pesa:
+      # - key: MPESA_CALLBACK_URL
+      #   sync: false
+    disk:
+      name: sqlite-data
+      mountPath: /var/data
+      sizeGB: 1
