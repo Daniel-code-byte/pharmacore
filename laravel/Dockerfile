@@ -23,12 +23,15 @@ ENV APP_ENV=production \
     PORT=10000
 
 # /var/data is a Render persistent disk mount so SQLite survives deploys.
-RUN mkdir -p /var/data database
+RUN mkdir -p /var/data database \
+    storage/framework/cache/data storage/framework/cache/locks \
+    storage/framework/sessions storage/framework/views storage/logs \
+    storage/app/private storage/app/public bootstrap/cache
 
 EXPOSE 10000
 
 CMD ["sh", "-c", "\
     if [ ! -f /var/data/database.sqlite ]; then touch /var/data/database.sqlite; fi; \
-    php artisan migrate --force; \
+    php artisan migrate --force || { echo 'migrate failed'; exit 1; }; \
     exec php -S 0.0.0.0:${PORT:-10000} -t public \
 "]
